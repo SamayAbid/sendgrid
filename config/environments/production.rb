@@ -118,5 +118,13 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  ActionMailer::Base.smtp_settings = {
+  username: 'api_key',
+  password: Rails.application.credentials.dig(:sendgrid , :api_key),
+  domain: 'https://afternoon-ridge-89209.herokuapp.com/',
+  port: 587,
+  authentication: :plain,
+  enable_starttls_auto: true
+}
   config.action_mailer.default_url_options = { :host => 'https://afternoon-ridge-89209.herokuapp.com/' }
 end
